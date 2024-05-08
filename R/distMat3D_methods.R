@@ -138,34 +138,34 @@ setMethod("as.array", signature(x = "DistMat3D"),
   }
 }
 
-
-setMethod("[", signature(x = "DistMat3D"), 
-          function(x, i, j, n)
-{
-  if (all(c(missing(i), missing(j), missing(n))))
-    return(as.array(x))
-  if (missing(i))
-  {
-    index_i <- c(1:x@ncol)
-  } else {
-    index_i <- i
-  }
-  if (missing(j))
-  {
-    index_j <- c(1:x@ncol)
-  } else {
-    index_j <- j
-  }
- 
-  if (missing(n))
-  {
-    index_n <- c(1:x@nlyr)
-  } else {
-    index_n <- n
-  }
-  return(.doExtract(x, index_i, index_j, index_n))
-}         
-)
+# commented to fix problem during package checking
+# setMethod("[", signature(x = "DistMat3D"), 
+#           function(x, i, j, n)
+# {
+#   if (all(c(missing(i), missing(j), missing(n))))
+#     return(as.array(x))
+#   if (missing(i))
+#   {
+#     index_i <- c(1:x@ncol)
+#   } else {
+#     index_i <- i
+#   }
+#   if (missing(j))
+#   {
+#     index_j <- c(1:x@ncol)
+#   } else {
+#     index_j <- j
+#   }
+#  
+#   if (missing(n))
+#   {
+#     index_n <- c(1:x@nlyr)
+#   } else {
+#     index_n <- n
+#   }
+#   return(.doExtract(x, index_i, index_j, index_n))
+# }         
+# )
 
 setReplaceMethod("[", signature(x = "DistMat3D"), 
           function(x, i, j, n, value)
